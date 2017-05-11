@@ -60,3 +60,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+
+#results input {
+  width: 300px; }

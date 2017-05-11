@@ -9548,6 +9548,8 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -9560,10 +9562,39 @@ document.addEventListener('DOMContentLoaded', function () {
   var App = function (_React$Component) {
     _inherits(App, _React$Component);
 
-    function App() {
+    function App(props) {
       _classCallCheck(this, App);
 
-      return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+      var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
+
+      _this.colorClicked = function (e) {
+        e.preventDefault();
+        var randomColor = '#' + Math.random().toString(16).slice(-6);
+        e.target.style.backgroundColor = randomColor;
+        var stateNameC = "randomColor" + e.target.id;
+        _this.setState(_defineProperty({}, stateNameC, randomColor));
+      };
+
+      _this.changeTag = function (e, stateNameT) {
+        e.preventDefault();
+        //console.log(e.target);
+        var stateNameT = "colorTag" + e.target.id;
+        _this.setState(_defineProperty({}, stateNameT, e.target.value));
+      };
+
+      _this.state = {
+        randomColor1: "#726258",
+        colorTag1: "color1",
+        randomColor2: "#a57c55",
+        colorTag2: "color2",
+        randomColor3: "#c7b29b",
+        colorTag3: "color3",
+        randomColor4: "#534741",
+        colorTag4: "color4",
+        randomColor5: "#252525",
+        colorTag5: "color5"
+      };
+      return _this;
     }
 
     _createClass(App, [{
@@ -9576,7 +9607,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'div',
             { className: 'left' },
             _react2.default.createElement(Title, null),
-            _react2.default.createElement(Palette, null)
+            _react2.default.createElement(Palette, { handleClick: this.colorClicked, handleTag: this.changeTag, randomColor1: this.state.randomColor1, colorTag1: this.state.colorTag1, randomColor2: this.state.randomColor2, colorTag2: this.state.colorTag2, randomColor3: this.state.randomColor3, colorTag3: this.state.colorTag3, randomColor4: this.state.randomColor4, colorTag4: this.state.colorTag4, randomColor5: this.state.randomColor5, colorTag5: this.state.colorTag5 }),
+            _react2.default.createElement(Results, { randomColor1: this.state.randomColor1, colorTag1: this.state.colorTag1, randomColor2: this.state.randomColor2, colorTag2: this.state.colorTag2, randomColor3: this.state.randomColor3, colorTag3: this.state.colorTag3, randomColor4: this.state.randomColor4, colorTag4: this.state.colorTag4, randomColor5: this.state.randomColor5, colorTag5: this.state.colorTag5 })
           ),
           _react2.default.createElement(
             'div',
@@ -9596,13 +9628,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function Palette(props) {
       _classCallCheck(this, Palette);
 
-      var _this2 = _possibleConstructorReturn(this, (Palette.__proto__ || Object.getPrototypeOf(Palette)).call(this, props));
-
-      _this2.state = {
-        randomColor: "",
-        colorTag: ""
-      };
-      return _this2;
+      return _possibleConstructorReturn(this, (Palette.__proto__ || Object.getPrototypeOf(Palette)).call(this, props));
     }
 
     _createClass(Palette, [{
@@ -9614,60 +9640,11 @@ document.addEventListener('DOMContentLoaded', function () {
           _react2.default.createElement(
             'div',
             { id: 'palette' },
-            _react2.default.createElement(PaletteElement, { className: 'paletteColor1' }),
-            _react2.default.createElement(PaletteElement, { className: 'paletteColor2' }),
-            _react2.default.createElement(PaletteElement, { className: 'paletteColor3' }),
-            _react2.default.createElement(PaletteElement, { className: 'paletteColor4' }),
-            _react2.default.createElement(PaletteElement, { className: 'paletteColor5' })
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'results' },
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'span',
-                null,
-                'HEX'
-              ),
-              _react2.default.createElement('input', { type: 'text', value: 'HEX value' }),
-              _react2.default.createElement(
-                'button',
-                null,
-                'Copy to clipboard'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'span',
-                null,
-                'LESS'
-              ),
-              _react2.default.createElement('input', { type: 'text', value: 'LESS value' }),
-              _react2.default.createElement(
-                'button',
-                null,
-                'Copy to clipboard'
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'span',
-                null,
-                'SASS'
-              ),
-              _react2.default.createElement('input', { type: 'text', value: 'SASS value' }),
-              _react2.default.createElement(
-                'button',
-                null,
-                'Copy to clipboard'
-              )
-            )
+            _react2.default.createElement(PaletteElement, { colorId: '1', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor1, colorTag: this.props.colorTag1 }),
+            _react2.default.createElement(PaletteElement, { colorId: '2', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor2, colorTag: this.props.colorTag2 }),
+            _react2.default.createElement(PaletteElement, { colorId: '3', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor3, colorTag: this.props.colorTag3 }),
+            _react2.default.createElement(PaletteElement, { colorId: '4', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor4, colorTag: this.props.colorTag4 }),
+            _react2.default.createElement(PaletteElement, { colorId: '5', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor5, colorTag: this.props.colorTag5 })
           )
         );
       }
@@ -9682,29 +9659,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function PaletteElement(props) {
       _classCallCheck(this, PaletteElement);
 
-      var _this3 = _possibleConstructorReturn(this, (PaletteElement.__proto__ || Object.getPrototypeOf(PaletteElement)).call(this, props));
-
-      _this3.colorClicked = function (e) {
-        e.preventDefault();
-        var randomColor = '#' + Math.random().toString(16).slice(-6);
-        _this3.setState({
-          randomColor: randomColor
-        });
-        e.target.style.backgroundColor = randomColor;
-      };
-
-      _this3.changeTag = function (e) {
-        e.preventDefault();
-        _this3.setState({
-          colorTag: e.target.value
-        });
-      };
-
-      _this3.state = {
-        randomColor: _this3.props.randomColor,
-        colorTag: _this3.props.colorTag
-      };
-      return _this3;
+      return _possibleConstructorReturn(this, (PaletteElement.__proto__ || Object.getPrototypeOf(PaletteElement)).call(this, props));
     }
 
     _createClass(PaletteElement, [{
@@ -9713,13 +9668,13 @@ document.addEventListener('DOMContentLoaded', function () {
         return _react2.default.createElement(
           'div',
           { className: 'paletteColors' },
-          _react2.default.createElement('div', { onClick: this.colorClicked }),
+          _react2.default.createElement('div', { onClick: this.props.handleClick, id: this.props.colorId }),
           _react2.default.createElement(
             'span',
             null,
-            this.state.randomColor
+            this.props.randomColor
           ),
-          _react2.default.createElement('input', { onChange: this.changeTag, value: this.state.colorTag, placeholder: 'Tag your color', type: 'text' })
+          _react2.default.createElement('input', { onChange: this.props.handleTag, value: this.props.colorTag, placeholder: 'Tag your color', type: 'text' })
         );
       }
     }]);
@@ -9727,8 +9682,78 @@ document.addEventListener('DOMContentLoaded', function () {
     return PaletteElement;
   }(_react2.default.Component);
 
-  var Preview = function (_React$Component4) {
-    _inherits(Preview, _React$Component4);
+  var Results = function (_React$Component4) {
+    _inherits(Results, _React$Component4);
+
+    function Results() {
+      _classCallCheck(this, Results);
+
+      return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).apply(this, arguments));
+    }
+
+    _createClass(Results, [{
+      key: 'render',
+      value: function render() {
+        var hex = this.props.randomColor1 + ' ' + this.props.randomColor2 + ' ' + this.props.randomColor3 + ' ' + this.props.randomColor4 + ' ' + this.props.randomColor5;
+        var less = '@' + this.props.colorTag1 + ': ' + this.props.randomColor1 + '; @' + this.props.colorTag2 + ': ' + this.props.randomColor2 + '; @' + this.props.colorTag3 + ': ' + this.props.randomColor3 + '; @' + this.props.colorTag4 + ': ' + this.props.randomColor4 + '; @' + this.props.colorTag5 + ': ' + this.props.randomColor5 + ';';
+        var sass = '$colors: (' + this.props.colorTag1 + ': ' + this.props.randomColor1 + ', ' + this.props.colorTag2 + ': ' + this.props.randomColor2 + ', ' + this.props.colorTag3 + ': ' + this.props.randomColor3 + ', ' + this.props.colorTag4 + ': ' + this.props.randomColor4 + ', ' + this.props.colorTag5 + ': ' + this.props.randomColor5 + ');';
+        return _react2.default.createElement(
+          'div',
+          { id: 'results' },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'span',
+              null,
+              'HEX'
+            ),
+            _react2.default.createElement('input', { type: 'text', value: hex }),
+            _react2.default.createElement(
+              'button',
+              null,
+              'Copy to clipboard'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'span',
+              null,
+              'LESS'
+            ),
+            _react2.default.createElement('input', { type: 'text', value: less }),
+            _react2.default.createElement(
+              'button',
+              null,
+              'Copy to clipboard'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+              'span',
+              null,
+              'SASS'
+            ),
+            _react2.default.createElement('input', { type: 'text', value: sass }),
+            _react2.default.createElement(
+              'button',
+              null,
+              'Copy to clipboard'
+            )
+          )
+        );
+      }
+    }]);
+
+    return Results;
+  }(_react2.default.Component);
+
+  var Preview = function (_React$Component5) {
+    _inherits(Preview, _React$Component5);
 
     function Preview() {
       _classCallCheck(this, Preview);
@@ -9746,8 +9771,8 @@ document.addEventListener('DOMContentLoaded', function () {
     return Preview;
   }(_react2.default.Component);
 
-  var Title = function (_React$Component5) {
-    _inherits(Title, _React$Component5);
+  var Title = function (_React$Component6) {
+    _inherits(Title, _React$Component6);
 
     function Title() {
       _classCallCheck(this, Title);
