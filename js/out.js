@@ -9593,10 +9593,16 @@ document.addEventListener('DOMContentLoaded', function () {
   var Palette = function (_React$Component2) {
     _inherits(Palette, _React$Component2);
 
-    function Palette() {
+    function Palette(props) {
       _classCallCheck(this, Palette);
 
-      return _possibleConstructorReturn(this, (Palette.__proto__ || Object.getPrototypeOf(Palette)).apply(this, arguments));
+      var _this2 = _possibleConstructorReturn(this, (Palette.__proto__ || Object.getPrototypeOf(Palette)).call(this, props));
+
+      _this2.state = {
+        randomColor: "",
+        colorTag: ""
+      };
+      return _this2;
     }
 
     _createClass(Palette, [{
@@ -9604,12 +9610,65 @@ document.addEventListener('DOMContentLoaded', function () {
       value: function render() {
         return _react2.default.createElement(
           'div',
-          { id: 'palette' },
-          _react2.default.createElement(PaletteElement, { className: 'paletteColor1' }),
-          _react2.default.createElement(PaletteElement, { className: 'paletteColor2' }),
-          _react2.default.createElement(PaletteElement, { className: 'paletteColor3' }),
-          _react2.default.createElement(PaletteElement, { className: 'paletteColor4' }),
-          _react2.default.createElement(PaletteElement, { className: 'paletteColor5' })
+          null,
+          _react2.default.createElement(
+            'div',
+            { id: 'palette' },
+            _react2.default.createElement(PaletteElement, { className: 'paletteColor1' }),
+            _react2.default.createElement(PaletteElement, { className: 'paletteColor2' }),
+            _react2.default.createElement(PaletteElement, { className: 'paletteColor3' }),
+            _react2.default.createElement(PaletteElement, { className: 'paletteColor4' }),
+            _react2.default.createElement(PaletteElement, { className: 'paletteColor5' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'results' },
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                'HEX'
+              ),
+              _react2.default.createElement('input', { type: 'text', value: 'HEX value' }),
+              _react2.default.createElement(
+                'button',
+                null,
+                'Copy to clipboard'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                'LESS'
+              ),
+              _react2.default.createElement('input', { type: 'text', value: 'LESS value' }),
+              _react2.default.createElement(
+                'button',
+                null,
+                'Copy to clipboard'
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(
+                'span',
+                null,
+                'SASS'
+              ),
+              _react2.default.createElement('input', { type: 'text', value: 'SASS value' }),
+              _react2.default.createElement(
+                'button',
+                null,
+                'Copy to clipboard'
+              )
+            )
+          )
         );
       }
     }]);
@@ -9642,8 +9701,8 @@ document.addEventListener('DOMContentLoaded', function () {
       };
 
       _this3.state = {
-        randomColor: "",
-        colorTag: ""
+        randomColor: _this3.props.randomColor,
+        colorTag: _this3.props.colorTag
       };
       return _this3;
     }

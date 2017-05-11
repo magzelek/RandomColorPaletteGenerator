@@ -19,13 +19,39 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   class Palette extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        randomColor: "",
+        colorTag: "",
+      }
+    }
     render() {
-      return  <div id="palette">
-                <PaletteElement className="paletteColor1"/>
-                <PaletteElement className="paletteColor2"/>
-                <PaletteElement className="paletteColor3"/>
-                <PaletteElement className="paletteColor4"/>
-                <PaletteElement className="paletteColor5"/>
+      return  <div>
+                <div id="palette">
+                  <PaletteElement className="paletteColor1"/>
+                  <PaletteElement className="paletteColor2"/>
+                  <PaletteElement className="paletteColor3"/>
+                  <PaletteElement className="paletteColor4"/>
+                  <PaletteElement className="paletteColor5"/>
+                </div>
+                <div id="results">
+                  <div>
+                    <span>HEX</span>
+                    <input type="text" value="HEX value"/>
+                    <button>Copy to clipboard</button>
+                  </div>
+                  <div>
+                    <span>LESS</span>
+                    <input type="text" value="LESS value"/>
+                    <button>Copy to clipboard</button>
+                  </div>
+                  <div>
+                    <span>SASS</span>
+                    <input type="text" value="SASS value"/>
+                    <button>Copy to clipboard</button>
+                  </div>
+                </div>
               </div>
     }
   }
@@ -34,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function(){
     constructor(props) {
       super(props);
       this.state = {
-        randomColor: "",
-        colorTag: "",
+        randomColor: this.props.randomColor,
+        colorTag: this.props.colorTag,
       }
     }
     colorClicked = (e) => {
