@@ -1,0 +1,55 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.left {
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  width: 700px;
+  height: 100vh;
+  border-left: 1px solid lightGray;
+}
+
+#palette {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+}
+
+.paletteColors {
+  width: 20%;
+  height: 100%;
+}
+
+.paletteColor1 {
+  background-color: yellow;
+}
+
+.paletteColor2 {
+  background-color: green;
+}
+
+.paletteColor3 {
+  background-color: blue;
+}
+
+.paletteColor4 {
+  background-color: pink;
+}
+
+.paletteColor5 {
+  background-color: red;
+}
