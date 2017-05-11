@@ -2,6 +2,21 @@
   margin: 0;
   padding: 0; }
 
+#C1 {
+  background-color: #726258; }
+
+#C2 {
+  background-color: #a57c55; }
+
+#C3 {
+  background-color: #c7b29b; }
+
+#C4 {
+  background-color: #534741; }
+
+#C5 {
+  background-color: #252525; }
+
 #container {
   width: 100vw;
   height: 100vh;
@@ -38,21 +53,6 @@
     margin: 0 auto;
     text-align: center; }
 
-.paletteColor1 {
-  background-color: yellow; }
-
-.paletteColor2 {
-  background-color: green; }
-
-.paletteColor3 {
-  background-color: blue; }
-
-.paletteColor4 {
-  background-color: pink; }
-
-.paletteColor5 {
-  background-color: red; }
-
 #title {
   width: 100%;
   height: 150px;
@@ -62,4 +62,68 @@
   align-items: center; }
 
 #results input {
-  width: 300px; }
+  width: 100%; }
+
+.color1 {
+  background-color: #726258; }
+
+.color2 {
+  background-color: #a57c55; }
+
+.color3 {
+  background-color: #c7b29b; }
+
+.color4 {
+  background-color: #534741; }
+
+.color5 {
+  background-color: #252525; }
+
+#preview {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #preview .uiContainer {
+    width: 296px;
+    height: 392px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between; }
+  #preview .menu {
+    height: 32px; }
+  #preview .title {
+    height: 140px; }
+  #preview .text {
+    height: 80px; }
+  #preview .slider {
+    height: 140px; }
+  #preview .colorText {
+    background-color: grey; }
+  #preview .line {
+    height: 14px;
+    margin: 0 0 12px 31px; }
+    #preview .line:first-child {
+      margin-top: 36px; }
+  #preview .line1 {
+    width: 142px; }
+  #preview .line2 {
+    width: 183px; }
+  #preview .line3 {
+    width: 86px; }
+  #preview .textline {
+    height: 8px;
+    margin: 0 31px 6px 31px; }
+    #preview .textline:first-child {
+      margin-top: 20px; }
+  #preview .slider {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #preview .slider .sliderElem {
+      width: 73px;
+      height: 90px;
+      margin-right: 6px; }
+      #preview .slider .sliderElem:last-child {
+        margin-right: 0; }

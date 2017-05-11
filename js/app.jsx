@@ -8,41 +8,56 @@ document.addEventListener('DOMContentLoaded', function(){
     constructor(props) {
       super(props);
       this.state = {
-        randomColor1: "#726258",
-        colorTag1: "color1",
-        randomColor2: "#a57c55",
-        colorTag2: "color2",
-        randomColor3: "#c7b29b",
-        colorTag3: "color3",
-        randomColor4: "#534741",
-        colorTag4: "color4",
-        randomColor5: "#252525",
-        colorTag5: "color5",
+        randomColorC1: "#726258",
+        colorTagT1: "colorT1",
+        randomColorC2: "#a57c55",
+        colorTagT2: "colorT2",
+        randomColorC3: "#c7b29b",
+        colorTagT3: "colorT3",
+        randomColorC4: "#534741",
+        colorTagT4: "colorT4",
+        randomColorC5: "#252525",
+        colorTagT5: "colorT5",
       }
     }
+    colorizePreview = () => {
+      let color1 = Array.from(document.getElementsByClassName("color1"));
+      let color2 = Array.from(document.getElementsByClassName("color2"));
+      let color3 = Array.from(document.getElementsByClassName("color3"));
+      let color4 = Array.from(document.getElementsByClassName("color4"));
+      let color5 = Array.from(document.getElementsByClassName("color5"));
+      color1.forEach( el => el.style.backgroundColor=this.state.randomColorC1 );
+      color2.forEach( el => el.style.backgroundColor=this.state.randomColorC2 );
+      color3.forEach( el => el.style.backgroundColor=this.state.randomColorC3 );
+      color4.forEach( el => el.style.backgroundColor=this.state.randomColorC4 );
+      color5.forEach( el => el.style.backgroundColor=this.state.randomColorC5 );
+    }
     colorClicked = (e) => {
-      e.preventDefault();
+      this.colorizePreview();
       let randomColor = '#'+Math.random().toString(16).slice(-6);
       e.target.style.backgroundColor=randomColor;
       let stateNameC = "randomColor"+e.target.id;
       this.setState({
         [stateNameC]: randomColor,
       });
-    }
-    changeTag = (e, stateNameT) => {
       e.preventDefault();
-      //console.log(e.target);
-      var stateNameT = "colorTag"+e.target.id;
+    }
+    changeTag = (e) => {
+      let targetVal = e.target.value;
+      let targetId = e.target.id;
+      let stateNameT = "colorTag"+targetId;
       this.setState({
-        [stateNameT]: e.target.value,
+        [stateNameT]: targetVal,
       });
+      console.log(targetVal);
+      e.preventDefault();
     }
     render() {
       return  <div id="container">
                 <div className="left">
                   <Title/>
-                  <Palette handleClick={this.colorClicked} handleTag={this.changeTag} randomColor1={this.state.randomColor1} colorTag1={this.state.colorTag1} randomColor2={this.state.randomColor2} colorTag2={this.state.colorTag2} randomColor3={this.state.randomColor3} colorTag3={this.state.colorTag3} randomColor4={this.state.randomColor4} colorTag4={this.state.colorTag4} randomColor5={this.state.randomColor5} colorTag5={this.state.colorTag5} />
-                  <Results randomColor1={this.state.randomColor1} colorTag1={this.state.colorTag1} randomColor2={this.state.randomColor2} colorTag2={this.state.colorTag2} randomColor3={this.state.randomColor3} colorTag3={this.state.colorTag3} randomColor4={this.state.randomColor4} colorTag4={this.state.colorTag4} randomColor5={this.state.randomColor5} colorTag5={this.state.colorTag5} />
+                  <Palette handleClick={this.colorClicked} handleTag={this.changeTag} randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5} />
+                  <Results randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5} />
                 </div>
                 <div className="right">
                   <Preview/>
@@ -58,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function(){
     render() {
       return  <div>
                 <div id="palette">
-                  <PaletteElement colorId="1" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColor1} colorTag={this.props.colorTag1}/>
-                  <PaletteElement colorId="2" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColor2} colorTag={this.props.colorTag2}/>
-                  <PaletteElement colorId="3" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColor3} colorTag={this.props.colorTag3}/>
-                  <PaletteElement colorId="4" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColor4} colorTag={this.props.colorTag4}/>
-                  <PaletteElement colorId="5" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColor5} colorTag={this.props.colorTag5}/>
+                  <PaletteElement colorId="C1" tagId="T1" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColorC1} colorTag={this.props.colorTagT1}/>
+                  <PaletteElement colorId="C2" tagId="T2" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColorC2} colorTag={this.props.colorTagT2}/>
+                  <PaletteElement colorId="C3" tagId="T3" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColorC3} colorTag={this.props.colorTagT3}/>
+                  <PaletteElement colorId="C4" tagId="T4" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColorC4} colorTag={this.props.colorTagT4}/>
+                  <PaletteElement colorId="C5" tagId="T5" handleClick={this.props.handleClick} handleTag={this.props.handleTag} randomColor={this.props.randomColorC5} colorTag={this.props.colorTagT5}/>
                 </div>
               </div>
     }
@@ -76,16 +91,16 @@ document.addEventListener('DOMContentLoaded', function(){
       return  <div className="paletteColors">
                 <div onClick={this.props.handleClick} id={this.props.colorId}></div>
                 <span>{this.props.randomColor}</span>
-                <input onChange={this.props.handleTag} value={this.props.colorTag} placeholder="Tag your color" type="text"/>
+                <input placeholder="Tag your color" type="text" onChange={this.props.handleTag} value={this.props.colorTag} id={this.props.tagId}/>
               </div>
     }
   }
 
   class Results extends React.Component {
     render() {
-      let hex = `${this.props.randomColor1} ${this.props.randomColor2} ${this.props.randomColor3} ${this.props.randomColor4} ${this.props.randomColor5}`;
-      let less = `@${this.props.colorTag1}: ${this.props.randomColor1}; @${this.props.colorTag2}: ${this.props.randomColor2}; @${this.props.colorTag3}: ${this.props.randomColor3}; @${this.props.colorTag4}: ${this.props.randomColor4}; @${this.props.colorTag5}: ${this.props.randomColor5};`;
-      let sass = `$colors: (${this.props.colorTag1}: ${this.props.randomColor1}, ${this.props.colorTag2}: ${this.props.randomColor2}, ${this.props.colorTag3}: ${this.props.randomColor3}, ${this.props.colorTag4}: ${this.props.randomColor4}, ${this.props.colorTag5}: ${this.props.randomColor5});`
+      let hex = `${this.props.randomColorC1} ${this.props.randomColorC2} ${this.props.randomColorC3} ${this.props.randomColorC4} ${this.props.randomColorC5}`;
+      let less = `@${this.props.colorTagT1}: ${this.props.randomColorC1}; @${this.props.colorTagT2}: ${this.props.randomColorC2}; @${this.props.colorTagT3}: ${this.props.randomColorC3}; @${this.props.colorTagT4}: ${this.props.randomColorC4}; @${this.props.colorTagT5}: ${this.props.randomColorC5};`;
+      let sass = `$colors: (${this.props.colorTagT1}: ${this.props.randomColorC1}, ${this.props.colorTagT2}: ${this.props.randomColorC2}, ${this.props.colorTagT3}: ${this.props.randomColorC3}, ${this.props.colorTagT4}: ${this.props.randomColorC4}, ${this.props.colorTagT5}: ${this.props.randomColorC5});`
       return  <div id="results">
                 <div>
                   <span>HEX</span>
@@ -108,7 +123,27 @@ document.addEventListener('DOMContentLoaded', function(){
 
   class Preview extends React.Component {
     render() {
-      return  <div id="preview"></div>
+      return  <div id="preview">
+                <div className="uiContainer">
+                  <div className="color1 menu">
+                  </div>
+                  <div className="color2 title">
+                    <div className="colorText line line1"></div>
+                    <div className="colorText line line2"></div>
+                    <div className="colorText line line3"></div>
+                  </div>
+                  <div className="color3 text">
+                    <div className="colorText textline"></div>
+                    <div className="colorText textline"></div>
+                    <div className="colorText textline"></div>
+                  </div>
+                  <div className="color4 slider">
+                    <div className="color5 sliderElem"></div>
+                    <div className="color5 sliderElem"></div>
+                    <div className="color5 sliderElem"></div>
+                  </div>
+                </div>
+              </div>
     }
   }
 

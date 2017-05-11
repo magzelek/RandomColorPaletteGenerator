@@ -9567,32 +9567,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
+      _this.colorizePreview = function () {
+        var color1 = Array.from(document.getElementsByClassName("color1"));
+        var color2 = Array.from(document.getElementsByClassName("color2"));
+        var color3 = Array.from(document.getElementsByClassName("color3"));
+        var color4 = Array.from(document.getElementsByClassName("color4"));
+        var color5 = Array.from(document.getElementsByClassName("color5"));
+        color1.forEach(function (el) {
+          return el.style.backgroundColor = _this.state.randomColorC1;
+        });
+        color2.forEach(function (el) {
+          return el.style.backgroundColor = _this.state.randomColorC2;
+        });
+        color3.forEach(function (el) {
+          return el.style.backgroundColor = _this.state.randomColorC3;
+        });
+        color4.forEach(function (el) {
+          return el.style.backgroundColor = _this.state.randomColorC4;
+        });
+        color5.forEach(function (el) {
+          return el.style.backgroundColor = _this.state.randomColorC5;
+        });
+      };
+
       _this.colorClicked = function (e) {
-        e.preventDefault();
+        _this.colorizePreview();
         var randomColor = '#' + Math.random().toString(16).slice(-6);
         e.target.style.backgroundColor = randomColor;
         var stateNameC = "randomColor" + e.target.id;
         _this.setState(_defineProperty({}, stateNameC, randomColor));
+        e.preventDefault();
       };
 
-      _this.changeTag = function (e, stateNameT) {
+      _this.changeTag = function (e) {
+        var targetVal = e.target.value;
+        var targetId = e.target.id;
+        var stateNameT = "colorTag" + targetId;
+        _this.setState(_defineProperty({}, stateNameT, targetVal));
+        console.log(targetVal);
         e.preventDefault();
-        //console.log(e.target);
-        var stateNameT = "colorTag" + e.target.id;
-        _this.setState(_defineProperty({}, stateNameT, e.target.value));
       };
 
       _this.state = {
-        randomColor1: "#726258",
-        colorTag1: "color1",
-        randomColor2: "#a57c55",
-        colorTag2: "color2",
-        randomColor3: "#c7b29b",
-        colorTag3: "color3",
-        randomColor4: "#534741",
-        colorTag4: "color4",
-        randomColor5: "#252525",
-        colorTag5: "color5"
+        randomColorC1: "#726258",
+        colorTagT1: "colorT1",
+        randomColorC2: "#a57c55",
+        colorTagT2: "colorT2",
+        randomColorC3: "#c7b29b",
+        colorTagT3: "colorT3",
+        randomColorC4: "#534741",
+        colorTagT4: "colorT4",
+        randomColorC5: "#252525",
+        colorTagT5: "colorT5"
       };
       return _this;
     }
@@ -9607,8 +9633,8 @@ document.addEventListener('DOMContentLoaded', function () {
             'div',
             { className: 'left' },
             _react2.default.createElement(Title, null),
-            _react2.default.createElement(Palette, { handleClick: this.colorClicked, handleTag: this.changeTag, randomColor1: this.state.randomColor1, colorTag1: this.state.colorTag1, randomColor2: this.state.randomColor2, colorTag2: this.state.colorTag2, randomColor3: this.state.randomColor3, colorTag3: this.state.colorTag3, randomColor4: this.state.randomColor4, colorTag4: this.state.colorTag4, randomColor5: this.state.randomColor5, colorTag5: this.state.colorTag5 }),
-            _react2.default.createElement(Results, { randomColor1: this.state.randomColor1, colorTag1: this.state.colorTag1, randomColor2: this.state.randomColor2, colorTag2: this.state.colorTag2, randomColor3: this.state.randomColor3, colorTag3: this.state.colorTag3, randomColor4: this.state.randomColor4, colorTag4: this.state.colorTag4, randomColor5: this.state.randomColor5, colorTag5: this.state.colorTag5 })
+            _react2.default.createElement(Palette, { handleClick: this.colorClicked, handleTag: this.changeTag, randomColorC1: this.state.randomColorC1, colorTagT1: this.state.colorTagT1, randomColorC2: this.state.randomColorC2, colorTagT2: this.state.colorTagT2, randomColorC3: this.state.randomColorC3, colorTagT3: this.state.colorTagT3, randomColorC4: this.state.randomColorC4, colorTagT4: this.state.colorTagT4, randomColorC5: this.state.randomColorC5, colorTagT5: this.state.colorTagT5 }),
+            _react2.default.createElement(Results, { randomColorC1: this.state.randomColorC1, colorTagT1: this.state.colorTagT1, randomColorC2: this.state.randomColorC2, colorTagT2: this.state.colorTagT2, randomColorC3: this.state.randomColorC3, colorTagT3: this.state.colorTagT3, randomColorC4: this.state.randomColorC4, colorTagT4: this.state.colorTagT4, randomColorC5: this.state.randomColorC5, colorTagT5: this.state.colorTagT5 })
           ),
           _react2.default.createElement(
             'div',
@@ -9640,11 +9666,11 @@ document.addEventListener('DOMContentLoaded', function () {
           _react2.default.createElement(
             'div',
             { id: 'palette' },
-            _react2.default.createElement(PaletteElement, { colorId: '1', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor1, colorTag: this.props.colorTag1 }),
-            _react2.default.createElement(PaletteElement, { colorId: '2', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor2, colorTag: this.props.colorTag2 }),
-            _react2.default.createElement(PaletteElement, { colorId: '3', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor3, colorTag: this.props.colorTag3 }),
-            _react2.default.createElement(PaletteElement, { colorId: '4', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor4, colorTag: this.props.colorTag4 }),
-            _react2.default.createElement(PaletteElement, { colorId: '5', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColor5, colorTag: this.props.colorTag5 })
+            _react2.default.createElement(PaletteElement, { colorId: 'C1', tagId: 'T1', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColorC1, colorTag: this.props.colorTagT1 }),
+            _react2.default.createElement(PaletteElement, { colorId: 'C2', tagId: 'T2', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColorC2, colorTag: this.props.colorTagT2 }),
+            _react2.default.createElement(PaletteElement, { colorId: 'C3', tagId: 'T3', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColorC3, colorTag: this.props.colorTagT3 }),
+            _react2.default.createElement(PaletteElement, { colorId: 'C4', tagId: 'T4', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColorC4, colorTag: this.props.colorTagT4 }),
+            _react2.default.createElement(PaletteElement, { colorId: 'C5', tagId: 'T5', handleClick: this.props.handleClick, handleTag: this.props.handleTag, randomColor: this.props.randomColorC5, colorTag: this.props.colorTagT5 })
           )
         );
       }
@@ -9674,7 +9700,7 @@ document.addEventListener('DOMContentLoaded', function () {
             null,
             this.props.randomColor
           ),
-          _react2.default.createElement('input', { onChange: this.props.handleTag, value: this.props.colorTag, placeholder: 'Tag your color', type: 'text' })
+          _react2.default.createElement('input', { placeholder: 'Tag your color', type: 'text', onChange: this.props.handleTag, value: this.props.colorTag, id: this.props.tagId })
         );
       }
     }]);
@@ -9694,9 +9720,9 @@ document.addEventListener('DOMContentLoaded', function () {
     _createClass(Results, [{
       key: 'render',
       value: function render() {
-        var hex = this.props.randomColor1 + ' ' + this.props.randomColor2 + ' ' + this.props.randomColor3 + ' ' + this.props.randomColor4 + ' ' + this.props.randomColor5;
-        var less = '@' + this.props.colorTag1 + ': ' + this.props.randomColor1 + '; @' + this.props.colorTag2 + ': ' + this.props.randomColor2 + '; @' + this.props.colorTag3 + ': ' + this.props.randomColor3 + '; @' + this.props.colorTag4 + ': ' + this.props.randomColor4 + '; @' + this.props.colorTag5 + ': ' + this.props.randomColor5 + ';';
-        var sass = '$colors: (' + this.props.colorTag1 + ': ' + this.props.randomColor1 + ', ' + this.props.colorTag2 + ': ' + this.props.randomColor2 + ', ' + this.props.colorTag3 + ': ' + this.props.randomColor3 + ', ' + this.props.colorTag4 + ': ' + this.props.randomColor4 + ', ' + this.props.colorTag5 + ': ' + this.props.randomColor5 + ');';
+        var hex = this.props.randomColorC1 + ' ' + this.props.randomColorC2 + ' ' + this.props.randomColorC3 + ' ' + this.props.randomColorC4 + ' ' + this.props.randomColorC5;
+        var less = '@' + this.props.colorTagT1 + ': ' + this.props.randomColorC1 + '; @' + this.props.colorTagT2 + ': ' + this.props.randomColorC2 + '; @' + this.props.colorTagT3 + ': ' + this.props.randomColorC3 + '; @' + this.props.colorTagT4 + ': ' + this.props.randomColorC4 + '; @' + this.props.colorTagT5 + ': ' + this.props.randomColorC5 + ';';
+        var sass = '$colors: (' + this.props.colorTagT1 + ': ' + this.props.randomColorC1 + ', ' + this.props.colorTagT2 + ': ' + this.props.randomColorC2 + ', ' + this.props.colorTagT3 + ': ' + this.props.randomColorC3 + ', ' + this.props.colorTagT4 + ': ' + this.props.randomColorC4 + ', ' + this.props.colorTagT5 + ': ' + this.props.randomColorC5 + ');';
         return _react2.default.createElement(
           'div',
           { id: 'results' },
@@ -9764,7 +9790,36 @@ document.addEventListener('DOMContentLoaded', function () {
     _createClass(Preview, [{
       key: 'render',
       value: function render() {
-        return _react2.default.createElement('div', { id: 'preview' });
+        return _react2.default.createElement(
+          'div',
+          { id: 'preview' },
+          _react2.default.createElement(
+            'div',
+            { className: 'uiContainer' },
+            _react2.default.createElement('div', { className: 'color1 menu' }),
+            _react2.default.createElement(
+              'div',
+              { className: 'color2 title' },
+              _react2.default.createElement('div', { className: 'colorText line line1' }),
+              _react2.default.createElement('div', { className: 'colorText line line2' }),
+              _react2.default.createElement('div', { className: 'colorText line line3' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'color3 text' },
+              _react2.default.createElement('div', { className: 'colorText textline' }),
+              _react2.default.createElement('div', { className: 'colorText textline' }),
+              _react2.default.createElement('div', { className: 'colorText textline' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'color4 slider' },
+              _react2.default.createElement('div', { className: 'color5 sliderElem' }),
+              _react2.default.createElement('div', { className: 'color5 sliderElem' }),
+              _react2.default.createElement('div', { className: 'color5 sliderElem' })
+            )
+          )
+        );
       }
     }]);
 
