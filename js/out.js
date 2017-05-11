@@ -9556,130 +9556,169 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 __webpack_require__(80);
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'container' },
-        _react2.default.createElement(
-          'div',
-          { className: 'left' },
-          _react2.default.createElement(Title, null),
-          _react2.default.createElement(Palette, null)
-        ),
-        _react2.default.createElement(
-          'div',
-          { className: 'right' },
-          _react2.default.createElement(Preview, null)
-        )
-      );
-    }
-  }]);
-
-  return App;
-}(_react2.default.Component);
-
-var Palette = function (_React$Component2) {
-  _inherits(Palette, _React$Component2);
-
-  function Palette() {
-    var _ref;
-
-    var _temp, _this2, _ret;
-
-    _classCallCheck(this, Palette);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Palette.__proto__ || Object.getPrototypeOf(Palette)).call.apply(_ref, [this].concat(args))), _this2), _this2.colorClicked = function (e) {
-      e.preventDefault();
-      var randomColor = '#' + Math.random().toString(16).slice(-6);
-      e.target.style.backgroundColor = randomColor;
-    }, _temp), _possibleConstructorReturn(_this2, _ret);
-  }
-
-  _createClass(Palette, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'palette' },
-        _react2.default.createElement('div', { className: 'paletteColors paletteColor1', onClick: this.colorClicked }),
-        _react2.default.createElement('div', { className: 'paletteColors paletteColor2', onClick: this.colorClicked }),
-        _react2.default.createElement('div', { className: 'paletteColors paletteColor3', onClick: this.colorClicked }),
-        _react2.default.createElement('div', { className: 'paletteColors paletteColor4', onClick: this.colorClicked }),
-        _react2.default.createElement('div', { className: 'paletteColors paletteColor5', onClick: this.colorClicked })
-      );
-    }
-  }]);
-
-  return Palette;
-}(_react2.default.Component);
-
-var Preview = function (_React$Component3) {
-  _inherits(Preview, _React$Component3);
-
-  function Preview() {
-    _classCallCheck(this, Preview);
-
-    return _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).apply(this, arguments));
-  }
-
-  _createClass(Preview, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement('div', { id: 'preview' });
-    }
-  }]);
-
-  return Preview;
-}(_react2.default.Component);
-
-var Title = function (_React$Component4) {
-  _inherits(Title, _React$Component4);
-
-  function Title() {
-    _classCallCheck(this, Title);
-
-    return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
-  }
-
-  _createClass(Title, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { id: 'title' },
-        _react2.default.createElement(
-          'h1',
-          null,
-          'Random Color Palette Generator'
-        ),
-        _react2.default.createElement(
-          'h2',
-          null,
-          'Click the color to draw a new one!'
-        )
-      );
-    }
-  }]);
-
-  return Title;
-}(_react2.default.Component);
-
 document.addEventListener('DOMContentLoaded', function () {
+  var App = function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App() {
+      _classCallCheck(this, App);
+
+      return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    }
+
+    _createClass(App, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          { id: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'left' },
+            _react2.default.createElement(Title, null),
+            _react2.default.createElement(Palette, null)
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'right' },
+            _react2.default.createElement(Preview, null)
+          )
+        );
+      }
+    }]);
+
+    return App;
+  }(_react2.default.Component);
+
+  var Palette = function (_React$Component2) {
+    _inherits(Palette, _React$Component2);
+
+    function Palette() {
+      _classCallCheck(this, Palette);
+
+      return _possibleConstructorReturn(this, (Palette.__proto__ || Object.getPrototypeOf(Palette)).apply(this, arguments));
+    }
+
+    _createClass(Palette, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          { id: 'palette' },
+          _react2.default.createElement(PaletteElement, { className: 'paletteColor1' }),
+          _react2.default.createElement(PaletteElement, { className: 'paletteColor2' }),
+          _react2.default.createElement(PaletteElement, { className: 'paletteColor3' }),
+          _react2.default.createElement(PaletteElement, { className: 'paletteColor4' }),
+          _react2.default.createElement(PaletteElement, { className: 'paletteColor5' })
+        );
+      }
+    }]);
+
+    return Palette;
+  }(_react2.default.Component);
+
+  var PaletteElement = function (_React$Component3) {
+    _inherits(PaletteElement, _React$Component3);
+
+    function PaletteElement(props) {
+      _classCallCheck(this, PaletteElement);
+
+      var _this3 = _possibleConstructorReturn(this, (PaletteElement.__proto__ || Object.getPrototypeOf(PaletteElement)).call(this, props));
+
+      _this3.colorClicked = function (e) {
+        e.preventDefault();
+        var randomColor = '#' + Math.random().toString(16).slice(-6);
+        _this3.setState({
+          randomColor: randomColor
+        });
+        e.target.style.backgroundColor = randomColor;
+      };
+
+      _this3.changeTag = function (e) {
+        e.preventDefault();
+        _this3.setState({
+          colorTag: e.target.value
+        });
+      };
+
+      _this3.state = {
+        randomColor: "",
+        colorTag: ""
+      };
+      return _this3;
+    }
+
+    _createClass(PaletteElement, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          { className: 'paletteColors' },
+          _react2.default.createElement('div', { onClick: this.colorClicked }),
+          _react2.default.createElement(
+            'span',
+            null,
+            this.state.randomColor
+          ),
+          _react2.default.createElement('input', { onChange: this.changeTag, value: this.state.colorTag, placeholder: 'Tag your color', type: 'text' })
+        );
+      }
+    }]);
+
+    return PaletteElement;
+  }(_react2.default.Component);
+
+  var Preview = function (_React$Component4) {
+    _inherits(Preview, _React$Component4);
+
+    function Preview() {
+      _classCallCheck(this, Preview);
+
+      return _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).apply(this, arguments));
+    }
+
+    _createClass(Preview, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement('div', { id: 'preview' });
+      }
+    }]);
+
+    return Preview;
+  }(_react2.default.Component);
+
+  var Title = function (_React$Component5) {
+    _inherits(Title, _React$Component5);
+
+    function Title() {
+      _classCallCheck(this, Title);
+
+      return _possibleConstructorReturn(this, (Title.__proto__ || Object.getPrototypeOf(Title)).apply(this, arguments));
+    }
+
+    _createClass(Title, [{
+      key: 'render',
+      value: function render() {
+        return _react2.default.createElement(
+          'div',
+          { id: 'title' },
+          _react2.default.createElement(
+            'h1',
+            null,
+            'Random Color Palette Generator'
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Click the color to draw a new one!'
+          )
+        );
+      }
+    }]);
+
+    return Title;
+  }(_react2.default.Component);
+
   _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 });
 
