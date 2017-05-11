@@ -9662,7 +9662,16 @@ var Title = function (_React$Component4) {
       return _react2.default.createElement(
         'div',
         { id: 'title' },
-        'Random Color Palette Generator'
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Random Color Palette Generator'
+        ),
+        _react2.default.createElement(
+          'h2',
+          null,
+          'Click the color to draw a new one!'
+        )
       );
     }
   }]);

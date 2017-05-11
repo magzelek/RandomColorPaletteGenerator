@@ -41,7 +41,10 @@ class Preview extends React.Component {
 
 class Title extends React.Component {
   render() {
-    return  <div id="title">Random Color Palette Generator</div>
+    return  <div id="title">
+              <h1>Random Color Palette Generator</h1>
+              <h2>Click the color to draw a new one!</h2>
+            </div>
   }
 }
 
