@@ -20,18 +20,6 @@ document.addEventListener('DOMContentLoaded', function(){
         colorTagT5: "colorT5",
       }
     }
-    colorizePreview = () => {
-      let color1 = Array.from(document.getElementsByClassName("color1"));
-      let color2 = Array.from(document.getElementsByClassName("color2"));
-      let color3 = Array.from(document.getElementsByClassName("color3"));
-      let color4 = Array.from(document.getElementsByClassName("color4"));
-      let color5 = Array.from(document.getElementsByClassName("color5"));
-      color1.forEach( el => el.style.backgroundColor=this.state.randomColorC1 );
-      color2.forEach( el => el.style.backgroundColor=this.state.randomColorC2 );
-      color3.forEach( el => el.style.backgroundColor=this.state.randomColorC3 );
-      color4.forEach( el => el.style.backgroundColor=this.state.randomColorC4 );
-      color5.forEach( el => el.style.backgroundColor=this.state.randomColorC5 );
-    }
     colorClicked = (e) => {
       let randomColor = '#'+Math.random().toString(16).slice(-6);
       e.target.style.backgroundColor=randomColor;
@@ -39,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function(){
       this.setState({
         [stateNameC]: randomColor,
       });
-      this.colorizePreview();
       e.preventDefault();
     }
     changeTag = (e) => {
@@ -60,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                   <Results randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5} />
                 </div>
                 <div className="right">
-                  <Preview/>
+                  <Preview randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5}/>
                 </div>
               </div>
     }
@@ -108,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
       let less = `@${this.props.colorTagT1}: ${this.props.randomColorC1}; @${this.props.colorTagT2}: ${this.props.randomColorC2}; @${this.props.colorTagT3}: ${this.props.randomColorC3}; @${this.props.colorTagT4}: ${this.props.randomColorC4}; @${this.props.colorTagT5}: ${this.props.randomColorC5};`;
 
       let sass = `$colors: (${this.props.colorTagT1}: ${this.props.randomColorC1}, ${this.props.colorTagT2}: ${this.props.randomColorC2}, ${this.props.colorTagT3}: ${this.props.randomColorC3}, ${this.props.colorTagT4}: ${this.props.randomColorC4}, ${this.props.colorTagT5}: ${this.props.randomColorC5});`
-      
+
       return  <div id="results">
                 <div>
                   <span>HEX</span>
@@ -130,7 +117,23 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   class Preview extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+    colorizePreview = () => {
+      let color1 = Array.from(document.getElementsByClassName("color1"));
+      let color2 = Array.from(document.getElementsByClassName("color2"));
+      let color3 = Array.from(document.getElementsByClassName("color3"));
+      let color4 = Array.from(document.getElementsByClassName("color4"));
+      let color5 = Array.from(document.getElementsByClassName("color5"));
+      color1.forEach( el => el.style.backgroundColor=this.props.randomColorC1 );
+      color2.forEach( el => el.style.backgroundColor=this.props.randomColorC2 );
+      color3.forEach( el => el.style.backgroundColor=this.props.randomColorC3 );
+      color4.forEach( el => el.style.backgroundColor=this.props.randomColorC4 );
+      color5.forEach( el => el.style.backgroundColor=this.props.randomColorC5 );
+    }
     render() {
+      this.colorizePreview();
       return  <div id="preview">
                 <div className="uiContainer">
                   <div className="color1 menu">

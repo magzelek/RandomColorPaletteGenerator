@@ -9567,35 +9567,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
-      _this.colorizePreview = function () {
-        var color1 = Array.from(document.getElementsByClassName("color1"));
-        var color2 = Array.from(document.getElementsByClassName("color2"));
-        var color3 = Array.from(document.getElementsByClassName("color3"));
-        var color4 = Array.from(document.getElementsByClassName("color4"));
-        var color5 = Array.from(document.getElementsByClassName("color5"));
-        color1.forEach(function (el) {
-          return el.style.backgroundColor = _this.state.randomColorC1;
-        });
-        color2.forEach(function (el) {
-          return el.style.backgroundColor = _this.state.randomColorC2;
-        });
-        color3.forEach(function (el) {
-          return el.style.backgroundColor = _this.state.randomColorC3;
-        });
-        color4.forEach(function (el) {
-          return el.style.backgroundColor = _this.state.randomColorC4;
-        });
-        color5.forEach(function (el) {
-          return el.style.backgroundColor = _this.state.randomColorC5;
-        });
-      };
-
       _this.colorClicked = function (e) {
         var randomColor = '#' + Math.random().toString(16).slice(-6);
         e.target.style.backgroundColor = randomColor;
         var stateNameC = "randomColor" + e.target.id;
         _this.setState(_defineProperty({}, stateNameC, randomColor));
-        _this.colorizePreview();
         e.preventDefault();
       };
 
@@ -9639,7 +9615,7 @@ document.addEventListener('DOMContentLoaded', function () {
           _react2.default.createElement(
             'div',
             { className: 'right' },
-            _react2.default.createElement(Preview, null)
+            _react2.default.createElement(Preview, { randomColorC1: this.state.randomColorC1, colorTagT1: this.state.colorTagT1, randomColorC2: this.state.randomColorC2, colorTagT2: this.state.colorTagT2, randomColorC3: this.state.randomColorC3, colorTagT3: this.state.colorTagT3, randomColorC4: this.state.randomColorC4, colorTagT4: this.state.colorTagT4, randomColorC5: this.state.randomColorC5, colorTagT5: this.state.colorTagT5 })
           )
         );
       }
@@ -9796,15 +9772,41 @@ document.addEventListener('DOMContentLoaded', function () {
   var Preview = function (_React$Component5) {
     _inherits(Preview, _React$Component5);
 
-    function Preview() {
+    function Preview(props) {
       _classCallCheck(this, Preview);
 
-      return _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).apply(this, arguments));
+      var _this5 = _possibleConstructorReturn(this, (Preview.__proto__ || Object.getPrototypeOf(Preview)).call(this, props));
+
+      _this5.colorizePreview = function () {
+        var color1 = Array.from(document.getElementsByClassName("color1"));
+        var color2 = Array.from(document.getElementsByClassName("color2"));
+        var color3 = Array.from(document.getElementsByClassName("color3"));
+        var color4 = Array.from(document.getElementsByClassName("color4"));
+        var color5 = Array.from(document.getElementsByClassName("color5"));
+        color1.forEach(function (el) {
+          return el.style.backgroundColor = _this5.props.randomColorC1;
+        });
+        color2.forEach(function (el) {
+          return el.style.backgroundColor = _this5.props.randomColorC2;
+        });
+        color3.forEach(function (el) {
+          return el.style.backgroundColor = _this5.props.randomColorC3;
+        });
+        color4.forEach(function (el) {
+          return el.style.backgroundColor = _this5.props.randomColorC4;
+        });
+        color5.forEach(function (el) {
+          return el.style.backgroundColor = _this5.props.randomColorC5;
+        });
+      };
+
+      return _this5;
     }
 
     _createClass(Preview, [{
       key: 'render',
       value: function render() {
+        this.colorizePreview();
         return _react2.default.createElement(
           'div',
           { id: 'preview' },
