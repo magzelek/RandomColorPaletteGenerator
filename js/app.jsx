@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function(){
       this.setState({
         [stateNameT]: targetVal,
       });
-      console.log(targetVal);
+      //console.log(targetVal);
       e.preventDefault();
     }
     render() {
