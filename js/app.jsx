@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', function(){
       color5.forEach( el => el.style.backgroundColor=this.state.randomColorC5 );
     }
     colorClicked = (e) => {
-      this.colorizePreview();
       let randomColor = '#'+Math.random().toString(16).slice(-6);
       e.target.style.backgroundColor=randomColor;
       let stateNameC = "randomColor"+e.target.id;
       this.setState({
         [stateNameC]: randomColor,
       });
+      this.colorizePreview();
       e.preventDefault();
     }
     changeTag = (e) => {
@@ -97,25 +97,33 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   class Results extends React.Component {
+    copyVal = (e) => {
+      e.preventDefault();
+      e.target.previousSibling.select();
+      document.execCommand('copy');
+    }
     render() {
       let hex = `${this.props.randomColorC1} ${this.props.randomColorC2} ${this.props.randomColorC3} ${this.props.randomColorC4} ${this.props.randomColorC5}`;
+
       let less = `@${this.props.colorTagT1}: ${this.props.randomColorC1}; @${this.props.colorTagT2}: ${this.props.randomColorC2}; @${this.props.colorTagT3}: ${this.props.randomColorC3}; @${this.props.colorTagT4}: ${this.props.randomColorC4}; @${this.props.colorTagT5}: ${this.props.randomColorC5};`;
+
       let sass = `$colors: (${this.props.colorTagT1}: ${this.props.randomColorC1}, ${this.props.colorTagT2}: ${this.props.randomColorC2}, ${this.props.colorTagT3}: ${this.props.randomColorC3}, ${this.props.colorTagT4}: ${this.props.randomColorC4}, ${this.props.colorTagT5}: ${this.props.randomColorC5});`
+      
       return  <div id="results">
                 <div>
                   <span>HEX</span>
                   <input type="text" value={hex}/>
-                  <button>Copy to clipboard</button>
+                  <button onClick={this.copyVal} className="btn">Copy to clipboard</button>
                 </div>
                 <div>
                   <span>LESS</span>
                   <input type="text" value={less}/>
-                  <button>Copy to clipboard</button>
+                  <button onClick={this.copyVal} className="btn">Copy to clipboard</button>
                 </div>
                 <div>
                   <span>SASS</span>
                   <input type="text" value={sass}/>
-                  <button>Copy to clipboard</button>
+                  <button onClick={this.copyVal} className="btn">Copy to clipboard</button>
                 </div>
               </div>
     }
@@ -151,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function(){
     render() {
       return  <div id="title">
                 <h1>Random Color Palette Generator</h1>
-                <h2>Click the color to draw a new one!</h2>
+                <span>Click the color to draw a new one!</span>
               </div>
     }
   }

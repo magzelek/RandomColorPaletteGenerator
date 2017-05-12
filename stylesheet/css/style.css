@@ -1,6 +1,7 @@
-* {
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);* {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-size: 12px; }
 
 #C1 {
   background-color: #726258; }
@@ -49,20 +50,63 @@
   .paletteColors div {
     width: 100%;
     height: 100%; }
+  .paletteColors span {
+    margin-top: 10px; }
   .paletteColors input {
     margin: 0 auto;
-    text-align: center; }
+    margin-top: 10px;
+    text-align: center;
+    width: 100px; }
 
 #title {
   width: 100%;
-  height: 150px;
+  height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-family: 'Lora', serif;
+  color: #525252; }
+  #title h1 {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.4em; }
+  #title span {
+    font-weight: 400;
+    font-size: 20px; }
 
-#results input {
-  width: 100%; }
+#results {
+  margin-top: 50px; }
+  #results div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px; }
+    #results div span {
+      margin: 7px 0 7px 0;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: #c8c8c8; }
+    #results div input {
+      margin: 0 auto;
+      width: 70%; }
+    #results div .btn {
+      border: none;
+      background: none;
+      margin: 0 auto;
+      margin-top: 7px;
+      -webkit-border-radius: 8;
+      -moz-border-radius: 8;
+      border-radius: 8px;
+      color: #ffffff;
+      background: #c8c8c8;
+      padding: 3px 8px 3px 8px;
+      text-decoration: none; }
+    #results div .btn:hover {
+      background: #525252;
+      text-decoration: none; }
 
 .color1 {
   background-color: #726258; }
@@ -84,7 +128,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  margin-top: 170px; }
   #preview .uiContainer {
     width: 296px;
     height: 392px;

@@ -9591,11 +9591,11 @@ document.addEventListener('DOMContentLoaded', function () {
       };
 
       _this.colorClicked = function (e) {
-        _this.colorizePreview();
         var randomColor = '#' + Math.random().toString(16).slice(-6);
         e.target.style.backgroundColor = randomColor;
         var stateNameC = "randomColor" + e.target.id;
         _this.setState(_defineProperty({}, stateNameC, randomColor));
+        _this.colorizePreview();
         e.preventDefault();
       };
 
@@ -9712,17 +9712,32 @@ document.addEventListener('DOMContentLoaded', function () {
     _inherits(Results, _React$Component4);
 
     function Results() {
+      var _ref;
+
+      var _temp, _this4, _ret;
+
       _classCallCheck(this, Results);
 
-      return _possibleConstructorReturn(this, (Results.__proto__ || Object.getPrototypeOf(Results)).apply(this, arguments));
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      return _ret = (_temp = (_this4 = _possibleConstructorReturn(this, (_ref = Results.__proto__ || Object.getPrototypeOf(Results)).call.apply(_ref, [this].concat(args))), _this4), _this4.copyVal = function (e) {
+        e.preventDefault();
+        e.target.previousSibling.select();
+        document.execCommand('copy');
+      }, _temp), _possibleConstructorReturn(_this4, _ret);
     }
 
     _createClass(Results, [{
       key: 'render',
       value: function render() {
         var hex = this.props.randomColorC1 + ' ' + this.props.randomColorC2 + ' ' + this.props.randomColorC3 + ' ' + this.props.randomColorC4 + ' ' + this.props.randomColorC5;
+
         var less = '@' + this.props.colorTagT1 + ': ' + this.props.randomColorC1 + '; @' + this.props.colorTagT2 + ': ' + this.props.randomColorC2 + '; @' + this.props.colorTagT3 + ': ' + this.props.randomColorC3 + '; @' + this.props.colorTagT4 + ': ' + this.props.randomColorC4 + '; @' + this.props.colorTagT5 + ': ' + this.props.randomColorC5 + ';';
+
         var sass = '$colors: (' + this.props.colorTagT1 + ': ' + this.props.randomColorC1 + ', ' + this.props.colorTagT2 + ': ' + this.props.randomColorC2 + ', ' + this.props.colorTagT3 + ': ' + this.props.randomColorC3 + ', ' + this.props.colorTagT4 + ': ' + this.props.randomColorC4 + ', ' + this.props.colorTagT5 + ': ' + this.props.randomColorC5 + ');';
+
         return _react2.default.createElement(
           'div',
           { id: 'results' },
@@ -9737,7 +9752,7 @@ document.addEventListener('DOMContentLoaded', function () {
             _react2.default.createElement('input', { type: 'text', value: hex }),
             _react2.default.createElement(
               'button',
-              null,
+              { onClick: this.copyVal, className: 'btn' },
               'Copy to clipboard'
             )
           ),
@@ -9752,7 +9767,7 @@ document.addEventListener('DOMContentLoaded', function () {
             _react2.default.createElement('input', { type: 'text', value: less }),
             _react2.default.createElement(
               'button',
-              null,
+              { onClick: this.copyVal, className: 'btn' },
               'Copy to clipboard'
             )
           ),
@@ -9767,7 +9782,7 @@ document.addEventListener('DOMContentLoaded', function () {
             _react2.default.createElement('input', { type: 'text', value: sass }),
             _react2.default.createElement(
               'button',
-              null,
+              { onClick: this.copyVal, className: 'btn' },
               'Copy to clipboard'
             )
           )
@@ -9847,7 +9862,7 @@ document.addEventListener('DOMContentLoaded', function () {
             'Random Color Palette Generator'
           ),
           _react2.default.createElement(
-            'h2',
+            'span',
             null,
             'Click the color to draw a new one!'
           )
