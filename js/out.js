@@ -9580,7 +9580,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var targetId = e.target.id;
         var stateNameT = "colorTag" + targetId;
         _this.setState(_defineProperty({}, stateNameT, targetVal));
-        console.log(targetVal);
+        //console.log(targetVal);
         e.preventDefault();
       };
 
@@ -9615,7 +9615,7 @@ document.addEventListener('DOMContentLoaded', function () {
           _react2.default.createElement(
             'div',
             { className: 'right' },
-            _react2.default.createElement(Preview, { randomColorC1: this.state.randomColorC1, colorTagT1: this.state.colorTagT1, randomColorC2: this.state.randomColorC2, colorTagT2: this.state.colorTagT2, randomColorC3: this.state.randomColorC3, colorTagT3: this.state.colorTagT3, randomColorC4: this.state.randomColorC4, colorTagT4: this.state.colorTagT4, randomColorC5: this.state.randomColorC5, colorTagT5: this.state.colorTagT5 })
+            _react2.default.createElement(Preview, { randomColorC1: this.state.randomColorC1, randomColorC2: this.state.randomColorC2, randomColorC3: this.state.randomColorC3, randomColorC4: this.state.randomColorC4, randomColorC5: this.state.randomColorC5 })
           )
         );
       }
@@ -9661,7 +9661,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function PaletteElement(props) {
       _classCallCheck(this, PaletteElement);
 
-      return _possibleConstructorReturn(this, (PaletteElement.__proto__ || Object.getPrototypeOf(PaletteElement)).call(this, props));
+      var _this3 = _possibleConstructorReturn(this, (PaletteElement.__proto__ || Object.getPrototypeOf(PaletteElement)).call(this, props));
+
+      _this3.onHover = function (e) {
+        e.preventDefault();
+        e.target.nextSibling.style.visibility = "visible";
+        //console.log();
+      };
+
+      _this3.onOut = function (e) {
+        e.preventDefault();
+        e.target.nextSibling.style.visibility = "hidden";
+        //console.log();
+      };
+
+      return _this3;
     }
 
     _createClass(PaletteElement, [{
@@ -9676,7 +9690,12 @@ document.addEventListener('DOMContentLoaded', function () {
             null,
             this.props.randomColor
           ),
-          _react2.default.createElement('input', { placeholder: 'Tag your color', type: 'text', onChange: this.props.handleTag, value: this.props.colorTag, id: this.props.tagId })
+          _react2.default.createElement('input', { type: 'text', maxLength: '10', onChange: this.props.handleTag, onMouseOver: this.onHover, onMouseOut: this.onOut, value: this.props.colorTag, placeholder: 'Tag your color', id: this.props.tagId, className: 'tooltipHover' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'tooltip' },
+            'Name me!'
+          )
         );
       }
     }]);

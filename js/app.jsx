@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
                   <Results randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5} />
                 </div>
                 <div className="right">
-                  <Preview randomColorC1={this.state.randomColorC1} colorTagT1={this.state.colorTagT1} randomColorC2={this.state.randomColorC2} colorTagT2={this.state.colorTagT2} randomColorC3={this.state.randomColorC3} colorTagT3={this.state.colorTagT3} randomColorC4={this.state.randomColorC4} colorTagT4={this.state.colorTagT4} randomColorC5={this.state.randomColorC5} colorTagT5={this.state.colorTagT5}/>
+                  <Preview randomColorC1={this.state.randomColorC1} randomColorC2={this.state.randomColorC2} randomColorC3={this.state.randomColorC3} randomColorC4={this.state.randomColorC4} randomColorC5={this.state.randomColorC5} />
                 </div>
               </div>
     }
@@ -74,11 +74,22 @@ document.addEventListener('DOMContentLoaded', function(){
     constructor(props) {
       super(props);
     }
+    onHover = (e) => {
+      e.preventDefault();
+      e.target.nextSibling.style.visibility="visible";
+      //console.log();
+    }
+    onOut = (e) => {
+      e.preventDefault();
+      e.target.nextSibling.style.visibility="hidden";
+      //console.log();
+    }
     render() {
       return  <div className="paletteColors">
                 <div onClick={this.props.handleClick} id={this.props.colorId}></div>
                 <span>{this.props.randomColor}</span>
-                <input placeholder="Tag your color" type="text" onChange={this.props.handleTag} value={this.props.colorTag} id={this.props.tagId}/>
+                <input type="text" maxLength="10" onChange={this.props.handleTag} onMouseOver={this.onHover} onMouseOut={this.onOut} value={this.props.colorTag} placeholder="Tag your color" id={this.props.tagId} className="tooltipHover"/>
+                <div className="tooltip">Name me!</div>
               </div>
     }
   }
