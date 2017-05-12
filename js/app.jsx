@@ -77,12 +77,10 @@ document.addEventListener('DOMContentLoaded', function(){
     onHover = (e) => {
       e.preventDefault();
       e.target.nextSibling.style.visibility="visible";
-      //console.log();
     }
     onOut = (e) => {
       e.preventDefault();
       e.target.nextSibling.style.visibility="hidden";
-      //console.log();
     }
     render() {
       return  <div className="paletteColors">

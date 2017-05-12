@@ -9666,13 +9666,11 @@ document.addEventListener('DOMContentLoaded', function () {
       _this3.onHover = function (e) {
         e.preventDefault();
         e.target.nextSibling.style.visibility = "visible";
-        //console.log();
       };
 
       _this3.onOut = function (e) {
         e.preventDefault();
         e.target.nextSibling.style.visibility = "hidden";
-        //console.log();
       };
 
       return _this3;
